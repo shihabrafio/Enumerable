@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # MyEnumerable
 module MyEnumerable
   def all?
@@ -16,5 +14,11 @@ module MyEnumerable
     result = []
     each { |items| result << items if yield(items) }
     result
+  end
+
+  def max
+    max = first
+    each { |items| max << items if yield(items) > yield(max) }
+    max
   end
 end
